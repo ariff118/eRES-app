@@ -83,11 +83,22 @@ if cb1:
 df_PLO = read_pdf(PLO, pages = "all", multiple_tables = True)
 df_PLO_combined = pd.concat(df_PLO[0:len(df_PLO)])
 
+
+
+n_PLO = df_PLO_combined.shape
+st.write("There are ", n_PLO)
+
+
+
+
 # Convert from wide to long format using melt function in numpy
 # for 3 PLO's
 
-df_PLO_selection = df_PLO_combined.iloc[1:, [1,3,6,10,14]]
-df_PLO_selection = df_PLO_selection.drop(0, axis=0)  # only for multiple pages
+if len(df_PLO_combined) < 21:
+    df_PLO_selection = df_PLO_combined.iloc[1:, [1,3,6,10,14]]
+else:
+    df_PLO_selection = df_PLO_combined.iloc[1:, [1,3,6,10,14]]
+    df_PLO_selection = df_PLO_selection.drop(0, axis=0)  # only for multiple pages
 
 # rename column headings
 df_PLO_selection = df_PLO_selection.rename(columns = {'Unnamed: 0': 'STUDENT ID',
@@ -213,3 +224,11 @@ for i in p:
     df3_i = pd.DataFrame(freq_wide, columns = [i])
     df3_i['percent'] = round((df3_i[i] / df3_i[i].sum()) * 100, 1)
     st.write(df3_i)
+
+def filedownload(freq):
+    csv = freq.to_csv(index=False)
+    b64 = base64.b64encode(csv.encode()).decode()  # strings <-> bytes conversions
+    href = f'<a href="data:file/csv;base64,{b64}" download="freq_wide.csv">Download CSV File</a>'
+    return href
+
+st.markdown(filedownload(freq), unsafe_allow_html=True)
