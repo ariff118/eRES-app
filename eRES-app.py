@@ -1,4 +1,4 @@
-# import os
+import os
 import streamlit as st
 import pandas as pd
 import tabula
@@ -14,8 +14,15 @@ from IPython.display import display, HTML
 frame_text = st.sidebar.write("## e-RES Report UiTM Kedah v1.0")
 image = st.sidebar.image("logo fakulti.png")
 rad = st.sidebar.radio("Menu",["Home","Analysis","About Us"])
-LE15 = st.sidebar.file_uploader("Upload LE15 File: ")
-PLO = st.sidebar.file_uploader("Upload PLO File: ")
+# LE15 = st.sidebar.file_uploader("Upload LE15 File: ")
+# PLO = st.sidebar.file_uploader("Upload PLO File: ")
+
+LE15 = st.sidebar.text_input('Copy and Paste or type the file location here (example: E:\eRES\LE15.pdf): ')
+PLO = st.sidebar.text_input('Copy and Paste or type the file location here (example: E:\eRES\PLO.pdf): ')
+
+
+st.write(LE15)
+st.write(PLO)
 
 if rad == "Home":
     image_jata = st.image("jata.jpg")
