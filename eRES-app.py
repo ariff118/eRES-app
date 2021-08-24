@@ -16,7 +16,11 @@ image_jata = st.image("jata.jpg")
 st.write("""
 # Laporan Peperiksaan Akhir
 
-Data diperolehi dari laporan eRES semester semasa
+Data diperolehi dari laporan eRES semester semasa.
+
+Muatnaik fail yang diperlukan dalam format.
+Nota: fail pdf PLO dari eRES hendaklah di buang heading
+jadual pada setiap page sebelum di muatnaik ke sistem
 
 """)
 
@@ -24,11 +28,6 @@ frame_text = st.sidebar.write("## e-RES Report UiTM Kedah v1.0")
 image = st.sidebar.image("logo fakulti.png")
 LE15 = st.sidebar.file_uploader("Choose LE15 File: ")
 PLO = st.sidebar.file_uploader("Choose PLO File: ")
-
-def file_selector1():
-    filenames1 = os.listdir()
-    selected_filename1 = st.selectbox('Select a file', filenames1)
-    return os.path.join(selected_filename1)
 
 #def file_selector2(folder_path='./'):
 #    filenames2 = os.listdir(folder_path)
