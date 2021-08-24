@@ -240,8 +240,8 @@ if rad == "About Us":
 
     image_dev = st.image("profile.jpeg")
 
-    st.write("""
-    Kamarul Ariffin Mansor
+    st.markdown("""
+    ### **Kamarul Ariffin Mansor**
 
     Senior Lecturer
 
