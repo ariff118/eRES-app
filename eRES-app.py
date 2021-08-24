@@ -1,4 +1,4 @@
-import os
+# import os
 import streamlit as st
 import pandas as pd
 import tabula
@@ -20,10 +20,6 @@ rad = st.sidebar.radio("Menu",["Home","Analysis","About Us"])
 LE15 = st.sidebar.text_input('Copy and Paste or type the file location here (example: E:\eRES\LE15.pdf): ')
 PLO = st.sidebar.text_input('Copy and Paste or type the file location here (example: E:\eRES\PLO.pdf): ')
 
-
-st.write("Your LE15 File Location is: ",LE15)
-st.write("Your PLO File Location is: ", PLO)
-
 if rad == "Home":
     image_jata = st.image("jata.jpg")
 
@@ -40,6 +36,9 @@ if rad == "Home":
     """)
 
     image_PLO = st.image("image_PLO.png")
+
+    st.write("Your LE15 File Location is: ", LE15)
+    st.write("Your PLO File Location is: ", PLO)
 
 if rad == "Analysis":
 
@@ -238,6 +237,25 @@ if rad == "Analysis":
         return href
 
     st.markdown(filedownload(freq), unsafe_allow_html=True)
+
+
+    ####################################
+    ##                                ##
+    ## SAVING TO EXCEL (.xlsx) FORMAT ##
+    ##                                ##
+    ####################################
+
+    # Create a Pandas Excel writer using XlsxWriter as the engine.
+    writer = pd.ExcelWriter(r'C:\Users\Public\output.xlsx', engine='xlsxwriter')
+    for i in p:
+        df3_i.to_excel(writer, sheet_name=i)
+
+    result2 = result.iloc[:, [0,1,2,3,4,6]]
+    result2.to_excel(writer, sheet_name='ALL')
+    writer.save()
+    writer.close()
+
+    st.write('Locate your full report at your Public folder. File Name = output.xlsx')
 
 if rad == "About Us":
 
