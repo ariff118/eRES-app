@@ -21,8 +21,8 @@ LE15 = st.sidebar.text_input('Copy and Paste or type the file location here (exa
 PLO = st.sidebar.text_input('Copy and Paste or type the file location here (example: E:\eRES\PLO.pdf): ')
 
 
-st.write(LE15)
-st.write(PLO)
+st.write("Your LE15 File Location is: ",LE15)
+st.write("Your PLO File Location is: ", PLO)
 
 if rad == "Home":
     image_jata = st.image("jata.jpg")
