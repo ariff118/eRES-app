@@ -2,12 +2,12 @@
 import streamlit as st
 import pandas as pd
 import tabula
+from tabula.io import read_pdf
 import base64
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
-from tabula.io import read_pdf
 from pandas.api.types import CategoricalDtype
 from IPython.display import display, HTML
 
