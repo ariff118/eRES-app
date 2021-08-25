@@ -1,8 +1,8 @@
 # import os
 import streamlit as st
 import pandas as pd
-import tabula-py
-from tabula-py import read_pdf
+import tabula
+from tabula.io import read_pdf
 import base64
 import matplotlib.pyplot as plt
 import numpy as np
@@ -19,8 +19,6 @@ rad = st.sidebar.radio("Menu",["Home","Analysis","About Us"])
 LE15 = st.sidebar.text_input('Copy and Paste or type the file location here (example: E:\eRES\LE15.pdf): ')
 PLO = st.sidebar.text_input('Copy and Paste or type the file location here (example: E:\eRES\PLO.pdf): ')
 
-LE15 = LE15
-PLO = PLO
 
 if rad == "Home":
     image_jata = st.image("jata.jpg")
