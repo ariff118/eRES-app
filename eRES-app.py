@@ -7,7 +7,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
-from tabula.io import read_pdf
+from tabula import read_pdf
 from pandas.api.types import CategoricalDtype
 from IPython.display import display, HTML
 
