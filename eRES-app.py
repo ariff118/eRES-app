@@ -286,7 +286,6 @@ if rad == "Report":
         if (result2[y].dtype == np.object):
             ucolumns=list(result2[y].unique())
             sidebars[y+"filter"]=st.sidebar.multiselect('Filter '+y, ucolumns)
-
     st.write(result2)
 
     st.markdown("""
