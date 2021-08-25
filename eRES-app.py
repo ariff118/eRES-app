@@ -2,9 +2,8 @@
 import streamlit as st
 import pandas as pd
 import tabula
-from tabula.io import read_pdf
+from tabula import read_pdf
 import base64
-import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
