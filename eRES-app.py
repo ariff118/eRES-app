@@ -1,8 +1,8 @@
 # import os
 import streamlit as st
 import pandas as pd
-import tabula
-from tabula import read_pdf
+import tabula-py
+from tabula-py import read_pdf
 import base64
 import matplotlib.pyplot as plt
 import numpy as np
