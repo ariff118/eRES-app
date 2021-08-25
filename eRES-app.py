@@ -2,6 +2,7 @@
 import streamlit as st
 import pandas as pd
 import tabula
+import tabula_py
 from tabula import read_pdf
 import base64
 import matplotlib.pyplot as plt
