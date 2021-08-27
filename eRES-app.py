@@ -1,4 +1,4 @@
-import os
+# import os
 import streamlit as st
 import pandas as pd
 import tabula
@@ -20,8 +20,19 @@ rad = st.sidebar.radio("Menu",["Home","Analysis", "Report", "About Us"])
 # LE15 = st.sidebar.file_uploader("Upload LE15 File: ")
 # PLO = st.sidebar.file_uploader("Upload PLO File: ")
 
-LE15 = st.sidebar.text_input('Copy and Paste or type the file location here (example: E:\eRES\LE15.pdf): ', "Type Here ...")
-PLO = st.sidebar.text_input('Copy and Paste or type the file location here (example: E:\eRES\PLO.pdf): ', "Type Here ...")
+#LE15 = st.sidebar.text_input('Copy and Paste or type the file location here (example: E:\eRES\LE15.pdf): ', "Type Here ...")
+#PLO = st.sidebar.text_input('Copy and Paste or type the file location here (example: E:\eRES\PLO.pdf): ', "Type Here ...")
+
+
+LE15 = st.sidebar.file_uploader("Choose LE15 file")
+if LE15 is not None:
+    df_le15 = read_pdf(LE15, pages = "all", multiple_tables = True)
+    st.sidebar.write('Successfully uploaded File:', LE15)
+
+PLO = st.sidebar.file_uploader("Choose PLOA file")
+if LE15 is not None:
+    df_PLO = read_pdf(PLO, pages = "all", multiple_tables = True)
+    st.sidebar.write('Successfully uploaded File:', PLO)
 
 # FROM HOME TAB
 # LE15 = st.write("Your LE15 File Location is: ", LE15)
@@ -46,7 +57,7 @@ PLO = st.sidebar.text_input('Copy and Paste or type the file location here (exam
 
 # using file path to read data
 # df_le15 = read_pdf(file_path1, pages = "all", multiple_tables = True)
-df_le15 = read_pdf(LE15, pages = "all", multiple_tables = True)
+# df_le15 = read_pdf(LE15, pages = "all", multiple_tables = True)
 
 # concatenate columns
 df_le15_combined = pd.concat(df_le15[0:len(df_le15)])
@@ -71,7 +82,7 @@ df_le15_selection.reset_index(drop=True, inplace=True)
 
 # using file path
 # df_PLO = read_pdf(file_path2, pages = "all", multiple_tables = True)
-df_PLO = read_pdf(PLO, pages = "all", multiple_tables = True)
+# df_PLO = read_pdf(PLO, pages = "all", multiple_tables = True)
 df_PLO_combined = pd.concat(df_PLO[0:len(df_PLO)])
 
 # Convert from wide to long format using melt function in numpy
